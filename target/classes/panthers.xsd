@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.panthers.com/panthers-ws"
+           targetNamespace="http://www.panthers.com/panthers-ws" elementFormDefault="qualified">
+      
+      <xs:element name="getCharacterByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="characterId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>    
+    <xs:element name="getCharacterByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="characterInfo" type="tns:characterInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element> 
+    <xs:complexType name="characterInfo">
+        <xs:sequence>
+            <xs:element name="characterId" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getAllCharactersRequest">
+        <xs:complexType/>
+    </xs:element>    
+    <xs:element name="getAllCharactersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="characterInfo" type="tns:characterInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element> 
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>  
+    <xs:element name="addCharacterRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addCharacterResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>            
+                <xs:element name="characterInfo" type="tns:characterInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateCharacterRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="characterInfo" type="tns:characterInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateCharacterResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+     <xs:element name="deleteCharacterRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="characterId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteCharacterResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>                   
+</xs:schema>
